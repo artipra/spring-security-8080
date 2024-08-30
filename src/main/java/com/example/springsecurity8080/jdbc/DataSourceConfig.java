@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-@Configuration
+//@Configuration
 public class DataSourceConfig {
 
-    @Bean(name="insightDataSource")
+//    @Bean(name="insightDataSource")
     public DataSource dataSource(){
        DataSourceBuilder dataSource = DataSourceBuilder.create();
        dataSource.url("jdbc:mysql://localhost:3306/security");
