@@ -7,6 +7,7 @@ import com.example.springsecurity8080.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,7 +16,12 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private UserRepository userRepository;
 
-    public Optional<UserInfo> signup(String mobileNumber){
-        return userRepository.findByMobileNo(mobileNumber);
+//    public Optional<UserInfo> signin(String mobileNo){
+//        return userRepository.findByUsername(mobileNo);
+//    }
+
+    public Optional<UserInfo> signin(String username){
+        return userRepository.findByUsername(username);
+//        userRepository.findById(1L);
     }
 }

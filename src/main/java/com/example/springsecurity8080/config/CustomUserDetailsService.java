@@ -20,8 +20,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String mobileNoEmailId) throws UsernameNotFoundException {
-       Optional<UserInfo> user =  userRepository.findByMobileNo(mobileNoEmailId);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+       Optional<UserInfo> user =  userRepository.findByUsername(username);
        if(user.isEmpty()) return null;
        UserInfo u1 = user.get();
        return new User(u1.getUsername(), u1.getPassword(),new ArrayList<>());

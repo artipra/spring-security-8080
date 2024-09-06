@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
     @GetMapping("/")
-    public ResponseEntity<String> signup(){
+    public ResponseEntity<String> home(){
         return ResponseEntity.ok("Hello welcome to amazon !!!!");
     }
 

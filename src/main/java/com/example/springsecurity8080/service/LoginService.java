@@ -10,6 +10,7 @@ import java.util.Optional;
 @Service
 public interface LoginService {
 
-    public Optional<UserInfo> signup(String mobileNumber);
+    public Optional<UserInfo> signin(String mobileNo);
+//    public Optional<UserInfo> signin(String username);
 
 }
