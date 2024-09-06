@@ -1,9 +1,6 @@
 package com.example.springsecurity8080.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +17,9 @@ public class UserInfo{
     private String mobileNo;
     private String username;
     private String password;
-    private Collection<String> roles;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name ="user_roles",
+               joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name ="role_id"))
+    private Collection<Role> roles;
 }

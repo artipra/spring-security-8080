@@ -27,7 +27,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                (auth) -> auth
-                       .requestMatchers("/").hasAuthority("user1").anyRequest().permitAll()
+                       .requestMatchers("/").hasRole("user1").anyRequest().permitAll()
                 )
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()).disable())
