@@ -21,20 +21,19 @@ public class SecurityConfiguration2 {
     @Autowired
     private CustomUserDetailsService customUserDetailsServiceGpt;
 
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(
                (auth) -> auth
-                       .requestMatchers("/about").authenticated()
+                       .requestMatchers("/").authenticated()
                        .requestMatchers(toH2Console()).permitAll()
-                       .requestMatchers("/").permitAll()
                 )
-                .formLogin(Customizer.withDefaults())
+                .formLogin(form -> form.loginPage("/login").permitAll())
                 .csrf(csrf -> csrf.ignoringRequestMatchers(toH2Console()).disable())
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin));
         return http.build();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(
             CustomUserDetailsService userDetailsService,
